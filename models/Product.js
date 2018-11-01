@@ -14,7 +14,7 @@ const ProductSchema = Schema({
 }, {collection: 'products'});
 
 
-class MediaItem {
+class Product {
     
     static async getItems() {
         try {

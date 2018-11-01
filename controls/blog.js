@@ -20,12 +20,17 @@ const BlogController = {
         } catch(err) {
             res.send(err);
         }
+    },
+
+    helloWorld: (req, res) => {
+        res.send('hello world');
     }
 
 }
 
 module.exports.Controller = BlogController;
 module.exports.controller = (app) => {
- app.get('/test/', BlogController.getItem);
- app.post('/test', BlogController.setItem);
+    app.get('/', BlogController.helloWorld);
+    app.get('/test/', BlogController.getItem);
+    app.post('/test', BlogController.setItem);
 }

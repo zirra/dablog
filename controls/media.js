@@ -11,7 +11,7 @@ const MediaController = {
             } else {
                 data = await MediaItem.getItems();
             }
-            res.send(data);
+            res.send({data: data});
 
         } catch (err) {
             res.send(err);
@@ -32,7 +32,7 @@ const MediaController = {
 
 module.exports.Controller = MediaController;
 module.exports.controller = (app) => {
-    app.get('/media/:id', MediaController.getItem);
-    app.get('/media/', MediaController.getItem);
-    app.post('/media', MediaController.setItem);
+    app.get('/api/media/:id', MediaController.getItem);
+    app.get('/api/media/', MediaController.getItem);
+    app.post('/api/media', MediaController.setItem);
 }

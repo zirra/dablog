@@ -31,6 +31,6 @@ const BlogController = {
 module.exports.Controller = BlogController;
 module.exports.controller = (app) => {
     app.get('/', BlogController.helloWorld);
-    app.get('/test/', BlogController.getItem);
-    app.post('/test', BlogController.setItem);
+    app.get('/api/blog/', BlogController.getItem);
+    app.post('/api/blog', BlogController.setItem);
 }

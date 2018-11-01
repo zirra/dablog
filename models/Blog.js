@@ -30,8 +30,23 @@ const BlogSchema = Schema({
 
 
 class Blog {
-    static async load() {
-        return 'it is data my friend'
+    
+    static async getItem(id) {
+        try {
+            return await this.findOne({_id: ObjectId(id)})
+                .exec();
+        } catch (err) {
+            return err;
+        }
+    }
+
+    static async getItems() {
+        try {
+            return await this.find()
+            .exec();
+        } catch (err) {
+            return err;
+        }
     }
 
     static async post(data) {

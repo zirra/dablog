@@ -6,7 +6,7 @@ const BlogController = {
         try{
         let data = await Blog.load();
 
-        res.send(data);
+        res.send({data: data});
         } catch (err) {
             res.send(err);
         }

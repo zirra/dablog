@@ -4,9 +4,13 @@ const BlogController = {
   
     getItem: async(req, res) => {
         try{
-        let data = await Blog.load();
+            if(req.params.id){
+                data = await Blog.getItem(req.params.id)
+            } else {
+                data = await Blog.getItems();
+            }
+            res.send({data: data});
 
-        res.send({data: data});
         } catch (err) {
             res.send(err);
         }

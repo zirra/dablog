@@ -34,7 +34,7 @@ class Blog {
     static async getItem(id) {
         try {
             return await this.findOne({_id: ObjectId(id)})
-                .exec();
+                
         } catch (err) {
             return err;
         }
@@ -43,7 +43,7 @@ class Blog {
     static async getItems() {
         try {
             return await this.find()
-            .exec();
+            
         } catch (err) {
             return err;
         }

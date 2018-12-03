@@ -1,17 +1,24 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const shortId = require('shortid');
 
 const BlogSchema = Schema({
+  blogShort : {
+    type: String,
+    default: shortId.generate,
+    unique: true,
+    index: true
+  },
   title : {
-      type: String,
-      default: null,
-      required: true,
-      unique: true
+    type: String,
+    default: null,
+    required: true,
+    unique: true
   },
   created: {
-      type: Date,
-      default: Date.now(),
-      required: true
+    type: Date,
+    default: Date.now(),
+    required: true
   },
   lastUpdated: {
     type: Date,
@@ -19,21 +26,20 @@ const BlogSchema = Schema({
     required: true
   },
   content: {
-      type: String,
-      default: null
+    type: String,
+    default: null
   },
   author: {
-      type: String,
-      default: 'Avery Woodbridge'
+    type: String,
+    default: 'Avery Woodbridge'
   }
 }, {collection: 'blogs'});
-
 
 class Blog {
     
     static async getItem(id) {
         try {
-            return await this.findOne({_id: ObjectId(id)})
+            return await this.findOne({_id: id})
                 
         } catch (err) {
             return err;

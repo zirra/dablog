@@ -2,19 +2,23 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const shortId = require('shortid');
 
-const ProductSchema = Schema({
-    date: {
-        type: Date,
-        default: Date.now()
-    },
-    title: {
-        type: String,
-        required: true
-    }
-}, {collection: 'products'});
+const HashTagSchema = Schema({
+   name : {
+     type: String,
+     default: null,
+     required: true,
+     unique: true, 
+   },
+   hashShort : {
+    type: String,
+    default: shortId.generate,
+    unique: true,
+    index: true
+   }
+}, {collection: 'hashTags'});
 
 
-class Product {
+class HashTag {
     
     static async getItems() {
         try {
@@ -43,6 +47,6 @@ class Product {
     }
 }
 
-ProductSchema.loadClass(Product);
+HashTagSchema.loadClass(HashTag);
 
-module.exports = mongoose.model('product', ProductSchema);
+module.exports = mongoose.model('hashTag', HashTagSchema);

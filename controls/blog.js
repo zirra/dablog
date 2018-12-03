@@ -26,16 +26,20 @@ const BlogController = {
         }
     },
 
-    helloWorld: (req, res) => {
-        res.send('hello world');
-    }
+    updateItem: async (req, res) => {
 
+    },
+
+    deleteItem: async (req, res) => {
+
+    }
 }
 
 module.exports.Controller = BlogController;
 module.exports.controller = (app) => {
-    app.get('/', BlogController.helloWorld);
+    app.post('/api/articles', BlogController.setItem);
     app.get('/api/articles/:id', BlogController.getItem);
     app.get('/api/articles/', BlogController.getItem);
-    app.post('/api/articles', BlogController.setItem);
+    app.put('/api/articles/:id', BlogController.updateItem);
+    app.delete('/api/article/:id', BlogController.deleteItem);   
 }

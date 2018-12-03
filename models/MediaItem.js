@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const ObjectId = require('mongodb').ObjectID;
+const shortId = require('shortid');
 
 const MediaItemSchema = Schema({
     date: {
@@ -39,7 +39,7 @@ class MediaItem {
 
     static async getItem(id) {
         try {
-            return await this.findOne({_id: ObjectId(id)})
+            return await this.findOne({_id: id})
                 .exec();
         } catch (err) {
             return err;

@@ -3,44 +3,44 @@ const Schema = mongoose.Schema;
 const shortId = require('shortid');
 
 const ProductSchema = Schema({
-    date: {
-        type: Date,
-        default: Date.now()
-    },
-    title: {
-        type: String,
-        required: true
-    }
-}, {collection: 'products'});
+  date: {
+    type: Date,
+    default: Date.now()
+  },
+  title: {
+    type: String,
+    required: true
+  }
+}, { collection: 'products' });
 
 
 class Product {
-    
-    static async getItems() {
-        try {
-            return await this.find()
-            .exec();
-        } catch (err) {
-            return err;
-        }
-    }
 
-    static async getItem(id) {
-        try {
-            return await this.findOne({_id: id})
-                .exec();
-        } catch (err) {
-            return err;
-        }
+  static async getItems() {
+    try {
+      return await this.find()
+        .exec();
+    } catch (err) {
+      return err;
     }
+  }
 
-    static async post(data) {
-        try {
-            return await this.create(data);
-        } catch (err) {
-            return err;
-        }
+  static async getItem(id) {
+    try {
+      return await this.findOne({ _id: id })
+        .exec();
+    } catch (err) {
+      return err;
     }
+  }
+
+  static async post(data) {
+    try {
+      return await this.create(data);
+    } catch (err) {
+      return err;
+    }
+  }
 }
 
 ProductSchema.loadClass(Product);

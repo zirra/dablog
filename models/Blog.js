@@ -32,7 +32,9 @@ const BlogSchema = Schema({
   author: {
     type: String,
     default: 'Avery Woodbridge'
-  }
+  },
+  tags: [{oid: {type: Schema.Types.ObjectId, unique: true}, tag: String}],
+  
 }, {collection: 'blogs'});
 
 class Blog {

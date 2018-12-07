@@ -21,7 +21,7 @@ const MediaController = {
   setItem: async (req, res) => {
     try {
       let newpost = req.body;
-      let result = await MediaItem.post(newpost);
+      let result = await MediaItem.createItem(newpost);
       res.send(result);
     } catch (err) {
       res.send(err);

@@ -21,7 +21,7 @@ const ProductController = {
   setItem: async (req, res) => {
     try {
       let newpost = req.body;
-      let result = await Product.post(newpost);
+      let result = await Product.createItem(newpost);
       res.send(result);
     } catch (err) {
       res.send(err);

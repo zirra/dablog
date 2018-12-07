@@ -17,7 +17,7 @@ const RootController = {
   setItem: async (req, res) => {
     try {
       let newpost = req.body;
-      let result = await Blog.post(newpost);
+      let result = await Blog.createItem(newpost);
       res.send(result);
     } catch (err) {
       res.send(err);

@@ -34,7 +34,7 @@ class Product {
     }
   }
 
-  static async post(data) {
+  static async createItem(data) {
     try {
       return await this.create(data);
     } catch (err) {

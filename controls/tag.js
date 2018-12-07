@@ -18,7 +18,7 @@ const TagController = {
   setItem: async (req, res) => {
     try {
       let newtag = req.body;
-      let result = await Tag.post(newtag);
+      let result = await Tag.createItem(newtag);
       res.send(result);
     } catch (err) {
       res.send(err);

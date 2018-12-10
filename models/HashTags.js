@@ -15,7 +15,13 @@ const HashTagSchema = Schema({
     unique: true,
     index: true
   }
-}, { collection: 'hashTags' });
+},
+{
+  timestamps: true,
+  toObject: { virtuals: true },
+  toJSON: { virtuals: true },
+  collection: 'hashTags'
+});
 
 
 class HashTag {

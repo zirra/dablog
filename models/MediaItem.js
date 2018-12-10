@@ -23,7 +23,14 @@ const MediaItemSchema = Schema({
     type: String,
     required: true
   }
-}, { collection: 'mediaitems' });
+},
+{
+  timestamps: true,
+  toObject: { virtuals: true },
+  toJSON: { virtuals: true },
+  id: false,
+  collection: 'mediaitems'
+});
 
 
 class MediaItem {

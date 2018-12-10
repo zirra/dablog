@@ -3,27 +3,17 @@ const Schema = mongoose.Schema;
 const shortId = require('shortid');
 
 const BlogSchema = Schema({
-  blogShort : {
+  blogShort: {
     type: String,
     default: shortId.generate,
     unique: true,
     index: true
   },
-  title : {
+  title: {
     type: String,
     default: null,
     required: true,
     unique: true
-  },
-  created: {
-    type: Date,
-    default: Date.now(),
-    required: true
-  },
-  lastUpdated: {
-    type: Date,
-    default: Date.now(),
-    required: true
   },
   content: {
     type: String,
@@ -33,37 +23,43 @@ const BlogSchema = Schema({
     type: String,
     default: 'Avery Woodbridge'
   },
-  tags: [{oid: {type: Schema.Types.ObjectId, unique: true}, tag: String}],
-  
-}, {collection: 'blogs'});
+  tags: [{ tagShort: String }]
+},
+{
+  timestamps: true,
+  toObject: { virtuals: true },
+  toJSON: { virtuals: true },
+  id: false,
+   collection: 'blogs' 
+  });
 
 class Blog {
-    
-    static async getItem(id) {
-        try {
-            return await this.findOne({_id: id})
-                
-        } catch (err) {
-            return err;
-        }
-    }
 
-    static async getItems() {
-        try {
-            return await this.find()
-            
-        } catch (err) {
-            return err;
-        }
-    }
+  static async getItem(id) {
+    try {
+      return await this.findOne({ _id: id })
 
-    static async createItem(data) {
-        try {
-            return await this.create(data);
-        } catch (err) {
-            return err;
-        }
+    } catch (err) {
+      return err;
     }
+  }
+
+  static async getItems() {
+    try {
+      return await this.find()
+
+    } catch (err) {
+      return err;
+    }
+  }
+
+  static async createItem(data) {
+    try {
+      return await this.create(data);
+    } catch (err) {
+      return err;
+    }
+  }
 }
 
 BlogSchema.loadClass(Blog);

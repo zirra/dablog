@@ -11,7 +11,14 @@ const ProductSchema = Schema({
     type: String,
     required: true
   }
-}, { collection: 'products' });
+},
+{
+  timestamps: true,
+  toObject: { virtuals: true },
+  toJSON: { virtuals: true },
+  id: false,
+  collection: 'products' 
+});
 
 
 class Product {

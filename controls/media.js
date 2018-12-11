@@ -4,7 +4,6 @@ const MediaController = {
 
   getItem: async (req, res) => {
     let data;
-
     try {
       if (req.params.id) {
         data = await MediaItem.getItem(req.params.id)
@@ -12,7 +11,6 @@ const MediaController = {
         data = await MediaItem.getItems();
       }
       res.send({ data: data });
-
     } catch (err) {
       res.send(err);
     }

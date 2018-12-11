@@ -3,6 +3,7 @@ const Blog = require('../models/Blog');
 const BlogController = {
 
   getItem: async (req, res) => {
+    let data;
     try {
       if (req.params.id) {
         data = await Blog.getItem(req.params.id)

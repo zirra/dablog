@@ -15,6 +15,22 @@ const BlogSchema = Schema({
     required: true,
     unique: true
   },
+  subTitle: {
+    type: String,
+    default: null,
+    required: true,
+    unique: true
+  },
+  category: {
+    type: String,
+    default: null,
+    required: true,
+    unique: true
+  },
+  snippet: {
+    type: String,
+    default: null
+  },
   content: {
     type: String,
     default: null
@@ -35,7 +51,17 @@ const BlogSchema = Schema({
 
 class Blog {
 
+  static async getByCategories(id) {
+    try {
+      return await this.find({category: id})
+      .exec()
+    } catch (err) {
+      return err;
+    }
+  }  
+  
   static async getItem(id) {
+    console.log(id)
     try {
       return await this.findOne({ _id: id })
 

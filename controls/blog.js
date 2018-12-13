@@ -17,6 +17,20 @@ const BlogController = {
     }
   },
 
+  getCategories: async (req, res) => {
+    try {
+      let cat = req.params.id;
+      if (cat) {
+        data = await Blog.getByCategories(req.params.id);
+        res.status(200).send(data);
+      } else {
+        res.status(401).send('missing category type');
+      }
+    } catch (err) {
+      res.send(err);
+    }
+  },
+
   setItem: async (req, res) => {
     try {
       let newpost = req.body;
@@ -39,6 +53,7 @@ const BlogController = {
 module.exports.Controller = BlogController;
 module.exports.controller = (app) => {
   app.post('/api/articles', BlogController.setItem);
+  app.get('/api/categories/:id', BlogController.getCategories);
   app.get('/api/articles/:id', BlogController.getItem);
   app.get('/api/articles/', BlogController.getItem);
   app.put('/api/articles/:id', BlogController.updateItem);

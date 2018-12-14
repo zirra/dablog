@@ -10,7 +10,7 @@ const BlogController = {
       } else {
         data = await Blog.getItems();
       }
-      res.send({ data: data });
+      res.send(data);
 
     } catch (err) {
       res.send(err);

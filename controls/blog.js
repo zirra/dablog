@@ -9,6 +9,7 @@ const BlogController = {
         data = await Blog.getItem(req.params.id);
       } else {
         data = await Blog.getItems();
+        
       }
       res.send(data);
 

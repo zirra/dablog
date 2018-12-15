@@ -63,6 +63,7 @@ class Blog {
   static async getItem(id) {
     try {
       return await this.findOne({ blogShort: id })
+      .exec()
     } catch (err) {
       return err;
     }

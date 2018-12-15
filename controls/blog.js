@@ -6,7 +6,7 @@ const BlogController = {
     let data;
     try {
       if (req.params.id) {
-        data = await Blog.getItem(req.params.id)
+        data = await Blog.getItem(req.params.id);
       } else {
         data = await Blog.getItems();
       }

@@ -10,7 +10,7 @@ const MediaController = {
       } else {
         data = await MediaItem.getItems();
       }
-      res.send({ data: data });
+      res.send(data);
     } catch (err) {
       res.send(err);
     }

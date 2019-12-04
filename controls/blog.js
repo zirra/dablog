@@ -19,8 +19,8 @@ const BlogController = {
   },
 
   getCategories: async (req, res) => {
+    const cat = req.params.id;
     try {
-      let cat = req.params.id;
       if (cat) {
         data = await Blog.getByCategories(req.params.id);
         res.status(200).send(data);
